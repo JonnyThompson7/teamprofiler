@@ -8,8 +8,20 @@ test('creates an employee object', () => {
     expect(employee.id).toBe('0'); 
 });
 
-test('asks for employees name', () => {
+test("asks for employees' id name", () => {
     const employee = new Employee('John');
 
     expect(employee.getName()).toEqual(expect.stringContaining(employee.name));
+});
+
+test("asks for employees' email", () => {
+    const employee = new Employee('John');
+
+    expect(employee.getEmail()).toEqual(expect.stringContaining(employee.email));
+});
+
+test("asks for employees' id number", () => {
+    const employee = new Employee('John');
+
+    expect(employee.getId()).toEqual(expect.stringContaining(employee.id));
 });
