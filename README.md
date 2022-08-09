@@ -1,4 +1,3 @@
-# teamprofiler
 # Team Profiler
 
 ## Description
@@ -12,3 +11,4 @@ Here is the live link to the video:
 
 Here is a screenshot of the example index.html created in the video:
 
+image.png
