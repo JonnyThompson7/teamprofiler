@@ -1,3 +1,34 @@
+// Create Card with Info per Role
+function makeCard(employeeArr) {
+    let cardArr = [];
+    for(i=0; i < employeeArr.length; i++) {
+        let answer;
+        if(employeeArr[i].getRole() === 'Manager') {
+            answer = 'Office Number :' + employeeArr[i].getOffice();
+        } else if (employeeArr[i].getRole() === 'Engineer') {
+            answer = 'Github: <a href="https://github.com/' + employeeArr[i].getGithub() + '">' + employeeArr[i].getGithub() + '</a>';
+        } else if (employeeArr[i].getRole() === 'Intern') {
+            answer = 'School: ' + employeeArr[i].getSchool();
+        }
+        let employeeCard =`
+        <article class="card col-3 m-2">
+        <div class="card-header background">
+            <h2>${employeeArr[i].getName()}</h2>
+            <h4>${employeeArr[i].getRole()}</h3>
+        </div>
+        <div class="card-body">
+            <p>Employee ID: ${employeeArr[i].getId()}</p>
+            <p>Email: <a href=mailto:"${employeeArr[i].getEmail()}">${employeeArr[i].getEmail()}</a></p>
+            <p>${answer}</p>
+        </div>
+        </article>
+        `
+        cardArr.push(employeeCard);
+    }
+    return cardArr.join('');
+};
+
+// HTML Layout
 function generateH(employeeArr) {
     return `
 <!DOCTYPE html>
@@ -11,11 +42,11 @@ function generateH(employeeArr) {
 </head>
 <body>
     <header>
-        <h1> ${employeeArr[0].name} Web Development Team</h1>
+        <h1> ${employeeArr[0].name}'s Team</h1>
     </header>
     <main class="row justify-content-center">
-    
-    </main>
+            ${makeCard(employeeArr)}
+        </main>
 </body>
 </html>
 `

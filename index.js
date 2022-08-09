@@ -10,6 +10,7 @@ function Profile() {
     this.employee;
 }
 
+// Prompt Containing Manager Questions
 Profile.prototype.initializePrompt = function() {
     inquirer
         .prompt([
@@ -42,6 +43,7 @@ Profile.prototype.initializePrompt = function() {
         })
 };
 
+// Prompt Inquiring about Adding Team Members
 Profile.prototype.secondPrompt = function() {
     inquirer
         .prompt({
@@ -61,9 +63,11 @@ Profile.prototype.secondPrompt = function() {
         })
 };
 
+// Prompt if Engineer is added
 Profile.prototype.engineerPrompt = function() {
     inquirer
-    .prompt({
+    .prompt([
+    {
         type: 'text',
         name: 'name',
         message: "What is the Engineer's name?"
@@ -82,7 +86,8 @@ Profile.prototype.engineerPrompt = function() {
         type: 'text',
         name: 'github',
         message: "What is the Engineer's GitHub Username?"
-    })
+    }
+])
     .then(({ name, email, id, github }) => {
         this.employee = new Engineer(name, email, id, github);
         this.employee.role = this.employee.getRole();
@@ -91,9 +96,11 @@ Profile.prototype.engineerPrompt = function() {
     })
 }
 
+// Prompt if Intern is added
 Profile.prototype.internPrompt = function() {
     inquirer
-    .prompt({
+    .prompt([
+    {
         type: 'text',
         name: 'name',
         message: "What is the Intern's name?"
@@ -112,7 +119,8 @@ Profile.prototype.internPrompt = function() {
         type: 'text',
         name: 'school',
         message: "What is the Intern's School?"
-    })
+    }
+])
     .then(({ name, email, id, school }) => {
         this.employee = new Intern(name, email, id, school);
         this.employee.role = this.employee.getRole();
@@ -121,6 +129,7 @@ Profile.prototype.internPrompt = function() {
     })
 };
 
+// Write HTML Page
 Profile.prototype.writePage = function() {
     const pageHTML = generateHTML(this.employeeArr);
     fs.writeFile('./dist/index.html', pageHTML, err => {
@@ -128,4 +137,5 @@ Profile.prototype.writePage = function() {
     });
 };
 
+// Initialize Prompt with Manager Questions
 new Profile().initializePrompt();
