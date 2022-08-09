@@ -25,3 +25,9 @@ test("asks for employees' id number", () => {
 
     expect(employee.getId()).toEqual(expect.stringContaining(employee.id));
 });
+
+test("gets the role of the employee", () => {
+    const employee = new Employee('John');
+
+    expect(employee.getRole()).toBe('employee');
+});
