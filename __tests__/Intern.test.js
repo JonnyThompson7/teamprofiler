@@ -1,6 +1,6 @@
 const Intern = require('../lib/Intern');
 
-test('gets the school of the intern', () => {
+test('creates a new intern object, and gets the school', () => {
     const intern = new Intern('John');
 
     expect(intern.getSchool()).toEqual(expect.stringContaining(intern.school));
